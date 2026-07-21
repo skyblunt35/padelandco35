@@ -59,12 +59,14 @@
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></symbol>
     <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></symbol>
     <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M13.5 21.5v-7.2h2.9l.5-3.4h-3.4V8.6c0-1 .3-1.6 1.7-1.6h1.8V3.9c-.3 0-1.4-.1-2.6-.1-2.6 0-4.3 1.6-4.3 4.4v2.7H7.2v3.4h2.9v7.2z"/></symbol>
+    <symbol id="i-zoom" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.2 16.2 21 21M8.5 11h5M11 8.5v5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
   </svg>
 
   <!-- Header -->
   <header class="site-header" id="site-header">
     <div class="site-header__inner container">
-      <a class="brand" href="index.html" aria-label="Padel &amp; Co — retour à l'accueil"><img class="brand__img" src="images/logo-blanc.png" alt="Padel &amp; Co" width="400" height="253"></a>
+      <a class="brand" href="index.html" aria-label="Padel &amp; Co — retour à l'accueil"><img class="brand__img" src="images/logo-bicolore.png" alt="Padel &amp; Co" width="400" height="253"></a>
       <nav class="nav" aria-label="Navigation principale">
         <ul class="nav__list">
           <li><a class="nav__link" href="index.html">Accueil</a></li>
@@ -155,6 +157,7 @@
           <div class="news__infos" data-reveal>
             <h3>Inscris ton équipe</h3>
             <p>Transmets-nous, <strong>pour les deux joueurs</strong>&nbsp;: nom, prénom, numéro de licence, téléphone et adresse mail.</p>
+            <p>Pas encore de licence&nbsp;? Aucun souci&nbsp;: tu peux la prendre <strong>directement au club</strong> — on s'en occupe avec toi, sur place.</p>
             <ul class="news__canaux">
               <li><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:padelandco35@gmail.com">padelandco35@gmail.com</a></li>
               <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+33756427345">07 56 42 73 45</a></li>
@@ -163,8 +166,31 @@
             <p class="news__urgence">Les tableaux se remplissent vite — ne traîne pas.</p>
           </div>
         </div>
+
+        <!-- 🗓️ AFFICHE OFFICIELLE P25 — à retirer avec l'annonce après le 27 juillet -->
+        <figure class="news-affiche" data-reveal>
+          <button class="gallery__zoom" type="button" data-lightbox-src="images/affiche-p25.jpg" data-lightbox-caption="L'affiche officielle des premiers tournois P25" aria-label="Agrandir l'affiche officielle des tournois P25">
+            <img src="images/affiche-p25.jpg" alt="Affiche officielle : du nouveau chez Padel &amp; Co, les tournois arrivent — P25 vendredi 24 juillet et lundi 27 juillet en soirée, licence obligatoire" loading="lazy" width="1080" height="1350">
+            <span class="gallery__hint" aria-hidden="true"><svg class="icon"><use href="#i-zoom"/></svg></span>
+          </button>
+          <figcaption>L'affiche officielle</figcaption>
+        </figure>
       </div>
     </section>
+
+    <!-- Lightbox (agrandissement de l'affiche) -->
+    <dialog class="lightbox" id="lightbox" aria-label="Affiche en grand format">
+      <figure class="lightbox__figure">
+        <img class="lightbox__img" src="" alt="">
+        <button class="lightbox__close" type="button" aria-label="Fermer l'affiche">
+          <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
+      </figure>
+      <div class="lightbox__bar">
+        <p class="lightbox__caption"></p>
+        <p class="lightbox__count">1 / 1</p>
+      </div>
+    </dialog>
 
     <!-- BRÈVES — la vie du club en trois flashs -->
     <section class="section section--paper" aria-label="Brèves du club">
@@ -221,7 +247,7 @@
     <div class="container">
       <div class="site-footer__grid">
         <div class="site-footer__brand">
-          <p class="brand brand--footer"><img class="brand__img brand__img--footer" src="images/logo-blanc.png" alt="Padel &amp; Co" width="400" height="253"></p>
+          <p class="brand brand--footer"><img class="brand__img brand__img--footer" src="images/logo-bicolore.png" alt="Padel &amp; Co" width="400" height="253"></p>
           <p class="site-footer__baseline">
             Le complexe 100&nbsp;% padel de la Bretagne romantique.
             5 terrains indoor à Tinténiac, entre Rennes et Saint-Malo.
@@ -283,8 +309,8 @@
       <div class="site-footer__bottom">
         <p>© <span id="year">2026</span> Padel &amp; Co — Tous droits réservés</p>
         <ul class="site-footer__legal">
-          <li><span class="legal-todo">Mentions légales</span></li>
-          <li><span class="legal-todo">Politique de confidentialité</span></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
         </ul>
         <p class="site-footer__wink">Fait à Tinténiac, entre deux tie-breaks.</p>
       </div>

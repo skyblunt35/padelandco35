@@ -512,6 +512,30 @@ function initNewsForm() {
 
 
 /* ============================================================
+   Diaporama du hero (accueil) — fondu croisé toutes les 5 s.
+   Purement temporel (pas lié au scroll) ; ne tourne pas quand
+   l'onglet est masqué. Le CSS gère la transition et le zoom lent.
+   ============================================================ */
+function initHeroDiapo() {
+  const frame = $('.hero__frame--diapo');
+  if (!frame) return;
+  const slides = Array.from(frame.querySelectorAll('.hero-slide'));
+  if (slides.length < 2) return;
+  let index = 0;
+  setInterval(() => {
+    if (document.hidden) return;
+    const sortant = slides[index];
+    index = (index + 1) % slides.length;
+    const entrant = slides[index];
+    sortant.classList.remove('is-current');
+    sortant.setAttribute('aria-hidden', 'true');
+    entrant.classList.add('is-current');
+    entrant.removeAttribute('aria-hidden');
+  }, 5000);
+}
+
+
+/* ============================================================
    Lancement
    ============================================================ */
 initPageTransitions();
@@ -527,3 +551,4 @@ initFloatingCta();
 initParallax();
 initYear();
 initNewsForm();
+initHeroDiapo();

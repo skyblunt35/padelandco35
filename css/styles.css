@@ -368,12 +368,20 @@ section[id] { scroll-margin-top: 5.25rem; }
   display: flex;
   flex-direction: column;
   padding: 6.5rem 1.5rem 2rem;
-  background: var(--navy-900);
-  background-image: var(--grain);
+  background: linear-gradient(200deg, #10233D 0%, var(--navy-900) 60%, var(--navy-950) 100%);
   opacity: 0;
   visibility: hidden;
   translate: 0 -2%;
   transition: opacity .32s var(--ease), translate .32s var(--ease), visibility .32s;
+}
+/* Grain discret (5 %), comme sur les heros — jamais en pleine opacité */
+.drawer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  opacity: .05;
+  pointer-events: none;
 }
 .drawer.is-open {
   opacity: 1;
@@ -397,6 +405,7 @@ body.menu-open { overflow: hidden; }
 .drawer.is-open .drawer__list li:nth-child(5) { transition-delay: .25s; }
 .drawer.is-open .drawer__list li:nth-child(6) { transition-delay: .3s; }
 .drawer.is-open .drawer__list li:nth-child(7) { transition-delay: .35s; }
+.drawer.is-open .drawer__list li:nth-child(8) { transition-delay: .4s; }
 
 .drawer__link {
   display: inline-block;
@@ -2301,6 +2310,109 @@ html.is-leaving body { opacity: 0; transition: opacity .17s ease; }
   flex-wrap: wrap;
   gap: .9rem;
   margin-top: 2.1rem;
+}
+
+
+/* ============================================================
+   DIAPORAMA DU HERO (accueil) — fondu croisé + zoom lent
+   Purement temporel (aucune animation liée au scroll).
+   ============================================================ */
+/* isole les z-index des vues : sans ça, elles passent au-dessus
+   des voisins du cadre (sticker « Nouveau », balle déco) */
+.hero__frame--diapo { isolation: isolate; }
+.hero__frame--diapo .hero-slide {
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 1.2s var(--ease), scale 1.2s var(--ease);
+}
+/* la 1re vue reste dans le flux : c'est elle qui donne sa taille au cadre */
+.hero__frame--diapo .hero-slide:first-child { position: relative; }
+.hero__frame--diapo .hero-slide:not(:first-child) {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+}
+.hero__frame--diapo .hero-slide.is-current {
+  opacity: 1;
+  z-index: 2;
+  animation: diapo-zoom 7s var(--ease) both;
+}
+@keyframes diapo-zoom {
+  from { scale: 1; }
+  to   { scale: 1.045; }
+}
+/* le liseré interne du cadre doit rester au-dessus des vues empilées */
+.hero__frame--diapo::after { z-index: 3; }
+
+
+/* ============================================================
+   AFFICHE P25 sur la page Actus — à retirer avec l'annonce P25
+   ============================================================ */
+.news-affiche {
+  position: relative;
+  max-width: 380px;
+  margin: 2.6rem auto 0;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.news-affiche img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform .6s var(--ease);
+}
+.news-affiche:hover img { transform: scale(1.03); }
+.news-affiche:hover .gallery__hint,
+.news-affiche .gallery__zoom:focus-visible .gallery__hint { opacity: 1; scale: 1; }
+.news-affiche figcaption {
+  position: absolute;
+  left: .8rem;
+  bottom: .8rem;
+  padding: .42em 1em;
+  background: rgba(9, 19, 36, .78);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  color: var(--white);
+  font-size: .78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  border-radius: var(--r-pill);
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   PAGES LÉGALES — mentions légales & politique de confidentialité
+   ============================================================ */
+.legal-body { max-width: 76ch; }
+.legal-body h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.65rem;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  margin: 2.4rem 0 .65rem;
+}
+.legal-body h2:first-child { margin-top: 0; }
+.legal-body p, .legal-body li { color: var(--slate); line-height: 1.65; }
+.legal-body p + p { margin-top: .7rem; }
+.legal-body ul { margin: .6rem 0; padding-left: 1.25rem; }
+.legal-body li + li { margin-top: .35rem; }
+.legal-body a { color: var(--blue); font-weight: 600; text-underline-offset: 3px; }
+.legal-body a:hover { color: var(--blue-strong); }
+.legal-body .btn { margin-top: 2.4rem; }
+.legal-updated { font-size: .92rem; font-style: italic; margin-top: 2.6rem; }
+
+/* Champs à faire compléter par le club avant mise en ligne — bien visibles */
+.todo-club {
+  background: rgba(217, 241, 76, .4);
+  color: var(--ink);
+  padding: .05em .3em;
+  border-radius: 4px;
+  font-style: normal;
+  font-weight: 600;
 }
 
 

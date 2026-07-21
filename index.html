@@ -130,7 +130,7 @@
   <header class="site-header" id="site-header">
     <div class="site-header__inner container">
 
-      <a class="brand" href="index.html" aria-label="Padel &amp; Co — retour à l'accueil"><img class="brand__img" src="images/logo-blanc.png" alt="Padel &amp; Co" width="400" height="253"></a>
+      <a class="brand" href="index.html" aria-label="Padel &amp; Co — retour à l'accueil"><img class="brand__img" src="images/logo-bicolore.png" alt="Padel &amp; Co" width="400" height="253"></a>
 
       <nav class="nav" aria-label="Navigation principale">
         <ul class="nav__list">
@@ -245,10 +245,14 @@
         </div>
 
         <div class="hero__media" data-reveal style="--d:.2s">
-          <!-- 📷 IMAGE HERO : photo réelle du club (terrains indoor en jeu).
-               Pour la remplacer : images/hero-terrains.jpg — format carré, ≥ 1200 px -->
-          <figure class="hero__frame">
-            <img src="images/hero-terrains.jpg" alt="Les terrains de padel indoor de Padel &amp; Co à Tinténiac, éclairés pendant un match" width="768" height="768" fetchpriority="high">
+          <!-- 📷 DIAPORAMA HERO : photos réelles du club, fondu croisé toutes les 5 s
+               (initHeroDiapo dans js/main.js). Pour ajouter une vue : dupliquer un
+               <img class="hero-slide"> et déposer le fichier dans images/. -->
+          <figure class="hero__frame hero__frame--diapo">
+            <img class="hero-slide is-current" src="images/hero-terrains.jpg" alt="Les terrains de padel indoor de Padel &amp; Co à Tinténiac, éclairés pendant un match" width="768" height="768" fetchpriority="high">
+            <img class="hero-slide" src="images/terrains-indoor.jpg" alt="Les pistes indoor bleues du complexe derrière leurs grilles noires" width="768" height="768" loading="lazy" aria-hidden="true">
+            <img class="hero-slide" src="images/pistes-vitres.jpg" alt="Les pistes bleues vues à travers les parois vitrées siglées Padel and Co" width="1200" height="1600" loading="lazy" aria-hidden="true">
+            <img class="hero-slide" src="images/piste-panoramique.jpg" alt="Vue panoramique d'une piste bleue du complexe" width="1400" height="1050" loading="lazy" aria-hidden="true">
           </figure>
           <p class="sticker" aria-hidden="true">Nouveau<br>depuis mars 2026</p>
           <span class="ball ball--hero" aria-hidden="true"></span>
@@ -540,6 +544,7 @@
                 Non — pour les parties entre amis, tu réserves et tu joues, c'est tout.
                 La licence n'entre en jeu que pour les <a href="#news">tournois homologués</a> (comme nos P25)&nbsp;:
                 chaque joueur transmet son numéro au moment de l'inscription.
+                Pas encore licencié&nbsp;? Tu peux prendre ta licence <strong>directement au club</strong>.
               </p>
             </div>
           </div>
@@ -602,7 +607,7 @@
     <div class="container">
       <div class="site-footer__grid">
         <div class="site-footer__brand">
-          <p class="brand brand--footer"><img class="brand__img brand__img--footer" src="images/logo-blanc.png" alt="Padel &amp; Co" width="400" height="253"></p>
+          <p class="brand brand--footer"><img class="brand__img brand__img--footer" src="images/logo-bicolore.png" alt="Padel &amp; Co" width="400" height="253"></p>
           <p class="site-footer__baseline">
             Le complexe 100&nbsp;% padel de la Bretagne romantique.
             5 terrains indoor à Tinténiac, entre Rennes et Saint-Malo.
@@ -665,8 +670,8 @@
         <p>© <span id="year">2026</span> Padel &amp; Co — Tous droits réservés</p>
         <ul class="site-footer__legal">
           <!-- Pages légales à créer avant mise en ligne -->
-          <li><span class="legal-todo">Mentions légales</span></li>
-          <li><span class="legal-todo">Politique de confidentialité</span></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
         </ul>
         <p class="site-footer__wink">Fait à Tinténiac, entre deux tie-breaks.</p>
       </div>
