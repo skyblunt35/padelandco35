@@ -536,13 +536,15 @@ body.menu-open { overflow: hidden; }
 
 /* Effet "surligneur" sur le mot clé */
 .marker {
+  display: inline-block;      /* permet la marge : de l'air au-dessus quand le mot
+                                 passe à la ligne (sinon le bloc volt mord la ligne
+                                 précédente avec l'interligne serré du titre) */
+  margin: .12em 0 0 .14em;
   font-style: italic;
   color: var(--navy-900);
   background: var(--volt);
   padding: 0 .14em .02em .1em;
   border-radius: .08em;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
 }
 
 .hero__text {
