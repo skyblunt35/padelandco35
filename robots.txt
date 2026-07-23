@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://padelandco35.fr/sitemap.xml
