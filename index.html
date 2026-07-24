@@ -244,13 +244,14 @@
 
         <div class="hero__media" data-reveal style="--d:.2s">
           <!-- 📷 DIAPORAMA HERO : photos réelles du club, fondu croisé toutes les 5 s
-               (initHeroDiapo dans js/main.js). Pour ajouter une vue : dupliquer un
-               <img class="hero-slide"> et déposer le fichier dans images/. -->
-          <figure class="hero__frame hero__frame--diapo">
+               (initDiapos dans js/main.js — tout conteneur [data-diapo]). Pour ajouter
+               une vue : dupliquer un <img class="hero-slide">, fichier dans images/. -->
+          <figure class="hero__frame hero__frame--diapo" data-diapo>
             <img class="hero-slide is-current" src="images/hero-terrains.jpg" alt="Les terrains de padel indoor de Padel &amp; Co à Tinténiac, éclairés pendant un match" width="768" height="768" fetchpriority="high">
-            <img class="hero-slide" src="images/terrains-indoor.jpg" alt="Les pistes indoor bleues du complexe derrière leurs grilles noires" width="768" height="768" loading="lazy" aria-hidden="true">
-            <img class="hero-slide" src="images/pistes-vitres.jpg" alt="Les pistes bleues vues à travers les parois vitrées siglées Padel and Co" width="1200" height="1600" loading="lazy" aria-hidden="true">
-            <img class="hero-slide" src="images/piste-panoramique.jpg" alt="Vue panoramique d'une piste bleue du complexe" width="1400" height="1050" loading="lazy" aria-hidden="true">
+            <img class="hero-slide" src="images/club-house-bar.jpg" alt="Le bar du club-house, comptoir noir et tabourets jaunes" width="1400" height="1050" loading="lazy" aria-hidden="true">
+            <img class="hero-slide" src="images/piste-filet.jpg" alt="Le filet et la piste bleue vus depuis le fond du court" width="1050" height="1400" loading="lazy" aria-hidden="true">
+            <img class="hero-slide" src="images/club-house-vue.jpg" alt="Le club-house et son bar, tabourets jaunes et fûts bleus Padel and Co" width="1400" height="1050" loading="lazy" aria-hidden="true">
+            <img class="hero-slide" src="images/machine-a-balles.jpg" alt="La machine à balles rouge du club, panier rempli, devant les pistes" width="1050" height="1400" loading="lazy" aria-hidden="true">
           </figure>
           <p class="sticker" aria-hidden="true">Nouveau<br>depuis mars 2026</p>
           <span class="ball ball--hero" aria-hidden="true"></span>
@@ -292,9 +293,12 @@
 
         <div class="gateways" data-reveal-group>
           <a class="gateway" href="le-complexe.html" data-reveal>
-            <div class="gateway__media">
-              <!-- 📷 images/terrains-indoor.jpg — photo réelle des pistes -->
-              <img src="images/terrains-indoor.jpg" alt="Les cinq pistes de padel indoor du complexe" loading="lazy" width="768" height="768">
+            <div class="gateway__media" data-diapo>
+              <!-- 📷 Mini-diaporama : pistes puis club-house sous plusieurs angles -->
+              <img class="hero-slide is-current" src="images/terrains-indoor.jpg" alt="Les cinq pistes de padel indoor du complexe" loading="lazy" width="768" height="768">
+              <img class="hero-slide" src="images/club-house-bar.jpg" alt="Le bar du club-house, comptoir noir et tabourets jaunes" loading="lazy" width="1400" height="1050" aria-hidden="true">
+              <img class="hero-slide" src="images/club-house-fauteuils.jpg" alt="Les fauteuils colorés du club-house devant la baie vitrée" loading="lazy" width="1400" height="1050" aria-hidden="true">
+              <img class="hero-slide" src="images/club-house-salon.jpg" alt="Le coin salon du club-house et sa fresque murale Padel and Co" loading="lazy" width="1050" height="1400" aria-hidden="true">
             </div>
             <div class="gateway__body">
               <p class="gateway__num">01 · Les installations</p>
@@ -387,6 +391,38 @@
         <p class="news-strip__badge">À la une</p>
         <p class="news-strip__texte"><strong>Premiers tournois homologués P25</strong> — vendredi 24 &amp; lundi 27 juillet, en soirée.</p>
         <a class="btn btn--volt btn--sm" href="actus.html">Toutes les actus<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         AU COMPTOIR (vitrine) — le détail vit sur le-complexe.html#comptoir
+         ============================================================ -->
+    <section class="section section--paper comptoir-teaser" aria-labelledby="comptoir-teaser-title">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <h2 class="section__title section__title--sm" id="comptoir-teaser-title">Au comptoir du club-house</h2>
+          <p class="section__lede">Raquettes à l'essai et à la vente, recharges wallet, licence : tout se règle sur place.</p>
+        </header>
+        <div class="comptoir-teaser__grid" data-reveal-group>
+          <a class="comptoir-teaser__item" href="le-complexe.html#comptoir" data-reveal>
+            <p class="comptoir-teaser__chiffre">12</p>
+            <p class="comptoir-teaser__texte">raquettes Tecnifibre et NOX à essayer sur le terrain avant de les adopter</p>
+          </a>
+          <a class="comptoir-teaser__item" href="le-complexe.html#comptoir" data-reveal style="--d:.08s">
+            <p class="comptoir-teaser__chiffre">+60&nbsp;€</p>
+            <p class="comptoir-teaser__texte">de crédit offert avec le wallet : recharge 300&nbsp;€, joue avec 360&nbsp;€</p>
+          </a>
+          <a class="comptoir-teaser__item" href="le-complexe.html#comptoir" data-reveal style="--d:.16s">
+            <p class="comptoir-teaser__chiffre">26&nbsp;€</p>
+            <p class="comptoir-teaser__texte">la licence, faite au comptoir en cinq minutes, valable jusqu'au 31&nbsp;août</p>
+          </a>
+        </div>
+        <p class="comptoir-teaser__more" data-reveal>
+          <a class="btn btn--dark" href="le-complexe.html#comptoir">
+            Passer au comptoir
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+        </p>
       </div>
     </section>
 
@@ -542,7 +578,8 @@
                 Non — pour les parties entre amis, tu réserves et tu joues, c'est tout.
                 La licence n'entre en jeu que pour les <a href="#news">tournois homologués</a> (comme nos P25)&nbsp;:
                 chaque joueur transmet son numéro au moment de l'inscription.
-                Pas encore licencié&nbsp;? Tu peux prendre ta licence <strong>directement au club</strong>.
+                Pas encore licencié&nbsp;? Tu peux prendre ta licence <strong>directement au club</strong>
+                (26&nbsp;€, valable jusqu'au 31&nbsp;août).
               </p>
             </div>
           </div>

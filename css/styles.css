@@ -1758,7 +1758,8 @@ body.menu-open { overflow: hidden; }
 
 /* Brèves (page Actus) */
 .breves { display: grid; gap: 1.2rem; }
-@media (min-width: 860px) { .breves { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 640px) { .breves { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1080px) { .breves { grid-template-columns: repeat(4, 1fr); } }
 .breve {
   padding: 1.7rem 1.6rem;
   background: var(--white);
@@ -2319,22 +2320,28 @@ html.is-leaving body { opacity: 0; transition: opacity .17s ease; }
    DIAPORAMA DU HERO (accueil) — fondu croisé + zoom lent
    Purement temporel (aucune animation liée au scroll).
    ============================================================ */
-/* isole les z-index des vues : sans ça, elles passent au-dessus
-   des voisins du cadre (sticker « Nouveau », balle déco) */
-.hero__frame--diapo { isolation: isolate; }
-.hero__frame--diapo .hero-slide {
+/* Conteneur générique [data-diapo] : isolation des z-index (sans elle, les vues
+   passeraient au-dessus des voisins — sticker « Nouveau », balle déco) */
+[data-diapo] {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+[data-diapo] .hero-slide {
   opacity: 0;
   z-index: 1;
   transition: opacity 1.2s var(--ease), scale 1.2s var(--ease);
 }
 /* la 1re vue reste dans le flux : c'est elle qui donne sa taille au cadre */
-.hero__frame--diapo .hero-slide:first-child { position: relative; }
-.hero__frame--diapo .hero-slide:not(:first-child) {
+[data-diapo] .hero-slide:first-child { position: relative; }
+[data-diapo] .hero-slide:not(:first-child) {
   position: absolute;
   inset: 0;
+  width: 100%;
   height: 100%;
+  object-fit: cover;
 }
-.hero__frame--diapo .hero-slide.is-current {
+[data-diapo] .hero-slide.is-current {
   opacity: 1;
   z-index: 2;
   animation: diapo-zoom 7s var(--ease) both;
@@ -2383,6 +2390,216 @@ html.is-leaving body { opacity: 0; transition: opacity .17s ease; }
   border-radius: var(--r-pill);
   pointer-events: none;
 }
+
+
+/* ============================================================
+   CARTES-ESPACES (le-complexe) — la visite en 4 diaporamas
+   ============================================================ */
+.espaces { display: grid; gap: 1.5rem; margin-top: 2.4rem; }
+@media (min-width: 760px) { .espaces { grid-template-columns: 1fr 1fr; } }
+
+.espace {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  text-align: left;
+  background: var(--navy-900);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-lg);
+  cursor: zoom-in;
+}
+.espace .hero-slide {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+/* voile bas pour la lisibilité du titre, sous les infos mais sur la photo */
+.espace::after {
+  content: "";
+  position: absolute;
+  inset: 42% 0 0;
+  z-index: 2;
+  background: linear-gradient(180deg, transparent, rgba(6, 13, 26, .82));
+  pointer-events: none;
+}
+.espace__infos {
+  position: absolute;
+  left: 1.15rem;
+  right: 1.15rem;
+  bottom: 1rem;
+  z-index: 3;
+  display: grid;
+  gap: .12rem;
+  color: var(--white);
+}
+.espace__num {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: .85rem;
+  letter-spacing: .14em;
+  color: var(--volt);
+}
+.espace__titre {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.45rem, 2.8vw, 1.95rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+.espace__nb { font-size: .84rem; color: var(--white-70); }
+.espace .gallery__hint { z-index: 3; }
+.espace:hover .gallery__hint,
+.espace:focus-visible .gallery__hint { opacity: 1; scale: 1; }
+
+
+/* ============================================================
+   COMPTOIR EN VITRINE (accueil) — teaser vers le-complexe#comptoir
+   ============================================================ */
+.comptoir-teaser__grid { display: grid; gap: 1.2rem; margin-top: 2.2rem; }
+@media (min-width: 820px) { .comptoir-teaser__grid { grid-template-columns: repeat(3, 1fr); } }
+.comptoir-teaser__item {
+  display: block;
+  padding: 1.6rem 1.5rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.comptoir-teaser__item:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.comptoir-teaser__chiffre {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.3rem, 4.5vw, 3.1rem);
+  line-height: 1;
+  color: var(--navy-900);
+}
+.comptoir-teaser__item:hover .comptoir-teaser__chiffre { color: var(--blue); }
+.comptoir-teaser__texte { margin-top: .5rem; color: var(--slate); font-size: .97rem; }
+.comptoir-teaser__more { margin-top: 1.8rem; }
+
+
+/* ============================================================
+   LE COMPTOIR (le-complexe) — raquettes, wallet, licence
+   ============================================================ */
+.comptoir__grid { display: grid; gap: 1.5rem; margin-top: 2.6rem; }
+@media (min-width: 960px) {
+  .comptoir__grid { grid-template-columns: 1.35fr 1fr; align-items: start; }
+}
+
+.comptoir-raquettes {
+  background: linear-gradient(200deg, #10233D 0%, var(--navy-900) 70%, var(--navy-950) 100%);
+  color: var(--white);
+  border-radius: var(--r-lg);
+  padding: clamp(1.6rem, 3.5vw, 2.5rem);
+}
+.comptoir-raquettes h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+.comptoir-raquettes__intro { color: var(--white-70); margin-top: .6rem; max-width: 52ch; }
+.comptoir-raquettes__marques { display: grid; gap: 1.8rem; margin-top: 1.8rem; }
+@media (min-width: 640px) { .comptoir-raquettes__marques { grid-template-columns: 1fr 1fr; } }
+.comptoir-raquettes__brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--volt);
+}
+.comptoir-raquettes__marque ul { margin-top: .5rem; }
+.comptoir-raquettes__marque li {
+  padding: .45rem 0;
+  border-bottom: 1px dashed var(--white-12);
+  font-size: .98rem;
+}
+/* Ligne cliquable : mini photo + nom + prix, zoom en lightbox */
+.raquette-ligne {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: zoom-in;
+}
+.raquette-ligne img {
+  width: 42px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex: none;
+  background: var(--navy-700);
+}
+.raquette-ligne:hover img { outline: 2px solid var(--volt); }
+.raquette-ligne__nom { flex: 1; }
+.raquette-ligne__prix { font-weight: 700; color: var(--volt); white-space: nowrap; }
+
+/* Photos d'accès (page contact) */
+.acces-photos { display: grid; gap: 1rem; margin-top: 1rem; grid-column: 1 / -1; }
+@media (min-width: 640px) { .acces-photos { grid-template-columns: 1fr 1fr; } }
+.acces-photos figure { position: relative; border-radius: var(--r-md); overflow: hidden; }
+.acces-photos img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1; /* photos sources en portrait : le carré préserve le centre (logo façade) */
+  object-fit: cover;
+}
+.acces-photos figcaption {
+  position: absolute;
+  left: .8rem;
+  bottom: .8rem;
+  padding: .42em 1em;
+  background: rgba(9, 19, 36, .78);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  color: var(--white);
+  font-size: .78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  border-radius: var(--r-pill);
+}
+
+.comptoir__side { display: grid; gap: 1.5rem; }
+.comptoir-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: clamp(1.4rem, 3vw, 1.9rem);
+}
+.comptoir-card h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.45rem;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+.comptoir-card p { color: var(--slate); margin-top: .55rem; }
+.comptoir-wallet { margin-top: .8rem; display: grid; gap: .45rem; }
+.comptoir-wallet li {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: .6rem .9rem;
+  color: var(--ink);
+}
+.comptoir-wallet strong { color: var(--blue); }
+.comptoir-liste { margin-top: .7rem; padding-left: 1.15rem; color: var(--slate); }
+.comptoir-liste li { list-style: disc; padding: .12rem 0; }
+.comptoir-card__note { font-size: .92rem; }
 
 
 /* ============================================================

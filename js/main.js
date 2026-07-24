@@ -392,26 +392,46 @@ function initLightbox() {
   const dialog = $('#lightbox');
   if (!dialog) return;
 
-  const triggers = $$('[data-lightbox-src]');
+  const triggers = $$('[data-lightbox-src], [data-lightbox-set]');
   if (!triggers.length) return;
 
   const img = $('.lightbox__img', dialog);
   const caption = $('.lightbox__caption', dialog);
   const count = $('.lightbox__count', dialog);
+  let items = [];   // le groupe en cours de visionnage
   let index = 0;
 
   const show = (i) => {
-    index = (i + triggers.length) % triggers.length; // boucle infinie
-    const t = triggers[index];
-    img.src = t.dataset.lightboxSrc;
-    img.alt = $('img', t)?.alt || '';
-    caption.textContent = t.dataset.lightboxCaption || '';
-    count.textContent = `${index + 1} / ${triggers.length}`;
+    index = (i + items.length) % items.length; // boucle infinie DANS le groupe
+    const it = items[index];
+    img.src = it.src;
+    img.alt = it.alt || it.caption || '';
+    caption.textContent = it.caption || '';
+    count.textContent = `${index + 1} / ${items.length}`;
   };
 
-  triggers.forEach((t, i) => {
+  const itemDe = (t) => ({
+    src: t.dataset.lightboxSrc,
+    caption: t.dataset.lightboxCaption || '',
+    alt: $('img', t)?.alt || '',
+  });
+
+  triggers.forEach((t) => {
     t.addEventListener('click', () => {
-      show(i);
+      if (t.dataset.lightboxSet) {
+        // Carte-espace : la liste des photos est portée par l'attribut (JSON)
+        items = JSON.parse(t.dataset.lightboxSet);
+        show(0);
+      } else {
+        // Déclencheur classique : on ne navigue que dans SON groupe
+        // (les raquettes ne se mélangent plus aux photos du complexe)
+        const nom = t.dataset.lightboxGroup || 'page';
+        const groupe = triggers.filter(
+          (x) => x.dataset.lightboxSrc && (x.dataset.lightboxGroup || 'page') === nom
+        );
+        items = groupe.map(itemDe);
+        show(groupe.indexOf(t));
+      }
       dialog.showModal();
     });
   });
@@ -512,26 +532,27 @@ function initNewsForm() {
 
 
 /* ============================================================
-   Diaporama du hero (accueil) — fondu croisé toutes les 5 s.
+   Diaporamas [data-diapo] — fondu croisé toutes les 5 s.
    Purement temporel (pas lié au scroll) ; ne tourne pas quand
    l'onglet est masqué. Le CSS gère la transition et le zoom lent.
+   Plusieurs diaporamas par page possibles (hero, passerelles…).
    ============================================================ */
-function initHeroDiapo() {
-  const frame = $('.hero__frame--diapo');
-  if (!frame) return;
-  const slides = Array.from(frame.querySelectorAll('.hero-slide'));
-  if (slides.length < 2) return;
-  let index = 0;
-  setInterval(() => {
-    if (document.hidden) return;
-    const sortant = slides[index];
-    index = (index + 1) % slides.length;
-    const entrant = slides[index];
-    sortant.classList.remove('is-current');
-    sortant.setAttribute('aria-hidden', 'true');
-    entrant.classList.add('is-current');
-    entrant.removeAttribute('aria-hidden');
-  }, 5000);
+function initDiapos() {
+  $$('[data-diapo]').forEach((frame) => {
+    const slides = Array.from(frame.querySelectorAll('.hero-slide'));
+    if (slides.length < 2) return;
+    let index = 0;
+    setInterval(() => {
+      if (document.hidden) return;
+      const sortant = slides[index];
+      index = (index + 1) % slides.length;
+      const entrant = slides[index];
+      sortant.classList.remove('is-current');
+      sortant.setAttribute('aria-hidden', 'true');
+      entrant.classList.add('is-current');
+      entrant.removeAttribute('aria-hidden');
+    }, 5000);
+  });
 }
 
 
@@ -551,4 +572,4 @@ initFloatingCta();
 initParallax();
 initYear();
 initNewsForm();
-initHeroDiapo();
+initDiapos();

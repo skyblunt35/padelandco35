@@ -178,76 +178,68 @@
 
         <!-- Galerie photos du complexe -->
         <header class="section__head section__head--left" data-reveal style="margin-top: clamp(3rem, 7vw, 4.5rem);">
-          <h2 class="section__title section__title--sm">Le complexe en images</h2>
+          <h2 class="section__title section__title--sm">Le complexe, espace par espace</h2>
+          <p class="section__lede">Chaque carte fait défiler son espace. Un clic, et tu zoomes sur toutes ses photos.</p>
         </header>
-        <div class="gallery" data-reveal-group>
-          <!-- 📷 GALERIE : photos réelles du club déjà en place.
-               Slots supplémentaires à prévoir : exterieur-complexe.jpg (vue extérieure du bâtiment),
-               terrain-detail.jpg (gros plan surface / vitres) — ratio libre. -->
-          <figure class="gallery__item gallery__item--wide" data-reveal>
-            <button class="gallery__zoom" type="button" data-lightbox-src="images/terrains-indoor.jpg" data-lightbox-caption="Les 5 pistes indoor" aria-label="Agrandir la photo : les 5 pistes indoor">
-              <img src="images/terrains-indoor.jpg" alt="Vue d'ensemble des cinq pistes de padel indoor du complexe" loading="lazy" width="768" height="768">
-              <span class="gallery__hint" aria-hidden="true"><svg class="icon"><use href="#i-zoom"/></svg></span>
-            </button>
-            <figcaption>Les 5 pistes indoor</figcaption>
-          </figure>
-          <figure class="gallery__item" data-reveal>
-            <button class="gallery__zoom" type="button" data-lightbox-src="images/club-house.jpg" data-lightbox-caption="Le club-house" aria-label="Agrandir la photo : le club-house">
-              <img src="images/club-house.jpg" alt="Le club-house de Padel &amp; Co avec vue directe sur les terrains" loading="lazy" width="768" height="768">
-              <span class="gallery__hint" aria-hidden="true"><svg class="icon"><use href="#i-zoom"/></svg></span>
-            </button>
-            <figcaption>Le club-house</figcaption>
-          </figure>
-          <figure class="gallery__item" data-reveal>
-            <button class="gallery__zoom" type="button" data-lightbox-src="images/collage-ambiance.jpg" data-lightbox-caption="L'esprit du club" aria-label="Agrandir la photo : l'esprit du club">
-              <img src="images/collage-ambiance.jpg" alt="Ambiance du club : terrains bleus, balles jaunes et logo Padel &amp; Co" loading="lazy" width="768" height="768">
-              <span class="gallery__hint" aria-hidden="true"><svg class="icon"><use href="#i-zoom"/></svg></span>
-            </button>
-            <figcaption>L'esprit du club</figcaption>
-          </figure>
-
-          <!-- 📷 Rangée 2 : photos récupérées en HD depuis la fiche Google du club -->
-          <figure class="gallery__item gallery__item--wide" data-reveal>
-            <button class="gallery__zoom" type="button" data-lightbox-src="images/terrains-match.jpg" data-lightbox-caption="Un soir de match" aria-label="Agrandir la photo : un soir de match">
-              <img src="images/terrains-match.jpg" alt="Soirée de matchs sur les pistes bleues du complexe, joueurs en pleine partie" loading="lazy" width="1600" height="1067">
-              <span class="gallery__hint" aria-hidden="true"><svg class="icon"><use href="#i-zoom"/></svg></span>
-            </button>
-            <figcaption>Un soir de match</figcaption>
-          </figure>
-          <figure class="gallery__item" data-reveal>
-            <button class="gallery__zoom" type="button" data-lightbox-src="images/salon-club-house.jpg" data-lightbox-caption="Le salon du club-house" aria-label="Agrandir la photo : le salon du club-house">
-              <img src="images/salon-club-house.jpg" alt="Le salon du club-house, mur au logo Padel &amp; Co et vue directe sur les pistes" loading="lazy" width="1600" height="1200">
-              <span class="gallery__hint" aria-hidden="true"><svg class="icon"><use href="#i-zoom"/></svg></span>
-            </button>
-            <figcaption>Le salon du club-house</figcaption>
-          </figure>
-          <figure class="gallery__item" data-reveal>
-            <button class="gallery__zoom" type="button" data-lightbox-src="images/pistes-vitres.jpg" data-lightbox-caption="Au bord des pistes" aria-label="Agrandir la photo : au bord des pistes">
-              <img src="images/pistes-vitres.jpg" alt="Les pistes bleues vues à travers les parois vitrées siglées Padel and Co" loading="lazy" width="1200" height="1600">
-              <span class="gallery__hint" aria-hidden="true"><svg class="icon"><use href="#i-zoom"/></svg></span>
-            </button>
-            <figcaption>Au bord des pistes</figcaption>
-          </figure>
-
-          <!-- 📷 EMPLACEMENTS PRÊTS — décommenter dès que les fichiers sont déposés dans images/ :
-               · action-mur.jpg        (joueur en plein point, raquette et balle au premier plan)
-               · club-house-bar.jpg    (le bar du club-house, comptoir bois et plafond noir)
-
-          <figure class="gallery__item" data-reveal>
-            <button class="gallery__zoom" type="button" data-lightbox-src="images/action-mur.jpg" data-lightbox-caption="Côté mur, côté jeu" aria-label="Agrandir la photo : côté mur, côté jeu">
-              <img src="images/action-mur.jpg" alt="Raquette et balle au premier plan devant un joueur en plein point" loading="lazy" width="800" height="1000">
-              <span class="gallery__hint" aria-hidden="true"><svg class="icon"><use href="#i-zoom"/></svg></span>
-            </button>
-            <figcaption>Côté mur, côté jeu</figcaption>
-          </figure>
-          <figure class="gallery__item" data-reveal>
-            <button class="gallery__zoom" type="button" data-lightbox-src="images/club-house-bar.jpg" data-lightbox-caption="Le bar du club-house" aria-label="Agrandir la photo : le bar du club-house">
-              <img src="images/club-house-bar.jpg" alt="Le bar du club-house et son comptoir en bois" loading="lazy" width="800" height="1400">
-              <span class="gallery__hint" aria-hidden="true"><svg class="icon"><use href="#i-zoom"/></svg></span>
-            </button>
-            <figcaption>Le bar du club-house</figcaption>
-          </figure>
-          -->
+        <div class="espaces" data-reveal-group>
+          <button class="espace" type="button" data-diapo data-reveal
+                  data-lightbox-set='[{"src":"images/terrains-indoor.jpg","caption":"Les 5 pistes indoor"},{"src":"images/terrains-match.jpg","caption":"Un soir de match"},{"src":"images/piste-filet.jpg","caption":"Au filet"},{"src":"images/pistes-vitres.jpg","caption":"Au bord des pistes"},{"src":"images/piste-panoramique.jpg","caption":"Vue panoramique"}]'
+                  aria-label="Voir les 5 photos : Les pistes">
+            <img class="hero-slide is-current" src="images/terrains-indoor.jpg" alt="Les 5 pistes indoor" loading="lazy" width="768" height="768">
+            <img class="hero-slide" src="images/terrains-match.jpg" alt="Un soir de match" loading="lazy" width="1600" height="1067" aria-hidden="true">
+            <img class="hero-slide" src="images/piste-filet.jpg" alt="Au filet" loading="lazy" width="1050" height="1400" aria-hidden="true">
+            <img class="hero-slide" src="images/pistes-vitres.jpg" alt="Au bord des pistes" loading="lazy" width="1200" height="1600" aria-hidden="true">
+            <img class="hero-slide" src="images/piste-panoramique.jpg" alt="Vue panoramique" loading="lazy" width="1400" height="1050" aria-hidden="true">
+            <span class="espace__infos">
+              <span class="espace__num">01</span>
+              <span class="espace__titre">Les pistes</span>
+              <span class="espace__nb">5 terrains indoor, un seul mot d'ordre : jouer · 5 photos</span>
+            </span>
+            <span class="gallery__hint" aria-hidden="true"><svg class="icon"><use href="#i-zoom"/></svg></span>
+          </button>
+          <button class="espace" type="button" data-diapo data-reveal
+                  data-lightbox-set='[{"src":"images/club-house-bar.jpg","caption":"Le bar du club-house"},{"src":"images/club-house-vue.jpg","caption":"Le club-house, côté bar"},{"src":"images/club-house-salon.jpg","caption":"Le coin salon et sa fresque"},{"src":"images/club-house-fauteuils.jpg","caption":"Les fauteuils du club-house"},{"src":"images/club-house-baie.jpg","caption":"Côté baie vitrée"},{"src":"images/salon-club-house.jpg","caption":"Le salon, vue sur les pistes"}]'
+                  aria-label="Voir les 6 photos : Le club-house">
+            <img class="hero-slide is-current" src="images/club-house-bar.jpg" alt="Le bar du club-house" loading="lazy" width="1400" height="1050">
+            <img class="hero-slide" src="images/club-house-vue.jpg" alt="Le club-house, côté bar" loading="lazy" width="1400" height="1050" aria-hidden="true">
+            <img class="hero-slide" src="images/club-house-salon.jpg" alt="Le coin salon et sa fresque" loading="lazy" width="1050" height="1400" aria-hidden="true">
+            <img class="hero-slide" src="images/club-house-fauteuils.jpg" alt="Les fauteuils du club-house" loading="lazy" width="1400" height="1050" aria-hidden="true">
+            <img class="hero-slide" src="images/club-house-baie.jpg" alt="Côté baie vitrée" loading="lazy" width="1400" height="1050" aria-hidden="true">
+            <img class="hero-slide" src="images/salon-club-house.jpg" alt="Le salon, vue sur les pistes" loading="lazy" width="1600" height="1200" aria-hidden="true">
+            <span class="espace__infos">
+              <span class="espace__num">02</span>
+              <span class="espace__titre">Le club-house</span>
+              <span class="espace__nb">Bar, écrans et troisième mi-temps · 6 photos</span>
+            </span>
+            <span class="gallery__hint" aria-hidden="true"><svg class="icon"><use href="#i-zoom"/></svg></span>
+          </button>
+          <button class="espace" type="button" data-diapo data-reveal
+                  data-lightbox-set='[{"src":"images/douches.jpg","caption":"Les douches"},{"src":"images/casiers-vestiaire.jpg","caption":"Casiers et banc"},{"src":"images/escalier-vestiaires.jpg","caption":"Direction douches et vestiaires"},{"src":"images/mezzanine.jpg","caption":"La mezzanine"}]'
+                  aria-label="Voir les 4 photos : Les vestiaires">
+            <img class="hero-slide is-current" src="images/douches.jpg" alt="Les douches" loading="lazy" width="1050" height="1400">
+            <img class="hero-slide" src="images/casiers-vestiaire.jpg" alt="Casiers et banc" loading="lazy" width="1050" height="1400" aria-hidden="true">
+            <img class="hero-slide" src="images/escalier-vestiaires.jpg" alt="Direction douches et vestiaires" loading="lazy" width="1050" height="1400" aria-hidden="true">
+            <img class="hero-slide" src="images/mezzanine.jpg" alt="La mezzanine" loading="lazy" width="1050" height="1400" aria-hidden="true">
+            <span class="espace__infos">
+              <span class="espace__num">03</span>
+              <span class="espace__titre">Les vestiaires</span>
+              <span class="espace__nb">Douches, casiers et récupération · 4 photos</span>
+            </span>
+            <span class="gallery__hint" aria-hidden="true"><svg class="icon"><use href="#i-zoom"/></svg></span>
+          </button>
+          <button class="espace" type="button" data-diapo data-reveal
+                  data-lightbox-set='[{"src":"images/machine-a-balles.jpg","caption":"La machine à balles"},{"src":"images/piste-perspective.jpg","caption":"Une piste prête au jeu"},{"src":"images/collage-ambiance.jpg","caption":"L&#39;esprit du club"}]'
+                  aria-label="Voir les 3 photos : Côté entraînement">
+            <img class="hero-slide is-current" src="images/machine-a-balles.jpg" alt="La machine à balles" loading="lazy" width="1050" height="1400">
+            <img class="hero-slide" src="images/piste-perspective.jpg" alt="Une piste prête au jeu" loading="lazy" width="1050" height="1400" aria-hidden="true">
+            <img class="hero-slide" src="images/collage-ambiance.jpg" alt="L'esprit du club" loading="lazy" width="768" height="768" aria-hidden="true">
+            <span class="espace__infos">
+              <span class="espace__num">04</span>
+              <span class="espace__titre">Côté entraînement</span>
+              <span class="espace__nb">La machine à balles et l'esprit du club · 3 photos</span>
+            </span>
+            <span class="gallery__hint" aria-hidden="true"><svg class="icon"><use href="#i-zoom"/></svg></span>
+          </button>
         </div>
       </div>
     </section>
@@ -271,6 +263,79 @@
         <p class="lightbox__count">1 / 6</p>
       </div>
     </dialog>
+
+    <!-- Le comptoir : raquettes à l'essai, wallet, licence -->
+    <section class="section section--white comptoir" id="comptoir" aria-labelledby="comptoir-title">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <h2 class="section__title section__title--sm" id="comptoir-title">Au comptoir du club-house</h2>
+          <p class="section__lede">
+            Raquettes à l'essai et à la vente, recharges wallet, licence :
+            tout se règle sur place, entre deux matchs.
+          </p>
+        </header>
+
+        <div class="comptoir__grid">
+          <article class="comptoir-raquettes" data-reveal>
+            <h3>Des raquettes à essayer, puis à adopter</h3>
+            <p class="comptoir-raquettes__intro">
+              Toutes en vente au club-house. Le bon réflexe : prends-la en main,
+              teste-la sur le terrain et décide en connaissance de cause.
+            </p>
+            <div class="comptoir-raquettes__marques">
+              <div class="comptoir-raquettes__marque">
+                <p class="comptoir-raquettes__brand">Tecnifibre</p>
+                <ul>
+                  <li><button class="raquette-ligne" type="button" data-lightbox-group="raquettes" data-lightbox-src="images/raquette-curva-team.jpg" data-lightbox-caption="Tecnifibre Curva Team · 120 €" aria-label="Voir la Tecnifibre Curva Team en photo"><img src="images/raquette-curva-team.jpg" alt="" loading="lazy" width="675" height="900"><span class="raquette-ligne__nom">Curva Team</span><span class="raquette-ligne__prix">120&nbsp;€</span></button></li>
+                  <li><button class="raquette-ligne" type="button" data-lightbox-group="raquettes" data-lightbox-src="images/raquette-bomba-soft.jpg" data-lightbox-caption="Tecnifibre Bomba Soft · 128 €" aria-label="Voir la Tecnifibre Bomba Soft en photo"><img src="images/raquette-bomba-soft.jpg" alt="" loading="lazy" width="675" height="900"><span class="raquette-ligne__nom">Bomba Soft</span><span class="raquette-ligne__prix">128&nbsp;€</span></button></li>
+                  <li><button class="raquette-ligne" type="button" data-lightbox-group="raquettes" data-lightbox-src="images/raquette-curva-soft.jpg" data-lightbox-caption="Tecnifibre Curva Soft · 135 €" aria-label="Voir la Tecnifibre Curva Soft en photo"><img src="images/raquette-curva-soft.jpg" alt="" loading="lazy" width="675" height="900"><span class="raquette-ligne__nom">Curva Soft</span><span class="raquette-ligne__prix">135&nbsp;€</span></button></li>
+                  <li><button class="raquette-ligne" type="button" data-lightbox-group="raquettes" data-lightbox-src="images/raquette-curva-speed.jpg" data-lightbox-caption="Tecnifibre Curva Speed · 145 €" aria-label="Voir la Tecnifibre Curva Speed en photo"><img src="images/raquette-curva-speed.jpg" alt="" loading="lazy" width="675" height="900"><span class="raquette-ligne__nom">Curva Speed</span><span class="raquette-ligne__prix">145&nbsp;€</span></button></li>
+                  <li><button class="raquette-ligne" type="button" data-lightbox-group="raquettes" data-lightbox-src="images/raquette-curva-power.jpg" data-lightbox-caption="Tecnifibre Curva Power · 165 €" aria-label="Voir la Tecnifibre Curva Power en photo"><img src="images/raquette-curva-power.jpg" alt="" loading="lazy" width="675" height="900"><span class="raquette-ligne__nom">Curva Power</span><span class="raquette-ligne__prix">165&nbsp;€</span></button></li>
+                  <li><button class="raquette-ligne" type="button" data-lightbox-group="raquettes" data-lightbox-src="images/raquette-bomba-max.jpg" data-lightbox-caption="Tecnifibre Bomba Max · 220 €" aria-label="Voir la Tecnifibre Bomba Max en photo"><img src="images/raquette-bomba-max.jpg" alt="" loading="lazy" width="675" height="900"><span class="raquette-ligne__nom">Bomba Max</span><span class="raquette-ligne__prix">220&nbsp;€</span></button></li>
+                </ul>
+              </div>
+              <div class="comptoir-raquettes__marque">
+                <p class="comptoir-raquettes__brand">NOX</p>
+                <ul>
+                  <li><button class="raquette-ligne" type="button" data-lightbox-group="raquettes" data-lightbox-src="images/raquette-silhouette.jpg" data-lightbox-caption="NOX Silhouette · 84 €" aria-label="Voir la NOX Silhouette en photo"><img src="images/raquette-silhouette.jpg" alt="" loading="lazy" width="675" height="900"><span class="raquette-ligne__nom">Silhouette</span><span class="raquette-ligne__prix">84&nbsp;€</span></button></li>
+                  <li><button class="raquette-ligne" type="button" data-lightbox-group="raquettes" data-lightbox-src="images/raquette-equation-hard.jpg" data-lightbox-caption="NOX Équation Hard · 112 €" aria-label="Voir la NOX Équation Hard en photo"><img src="images/raquette-equation-hard.jpg" alt="" loading="lazy" width="675" height="900"><span class="raquette-ligne__nom">Équation Hard</span><span class="raquette-ligne__prix">112&nbsp;€</span></button></li>
+                  <li><button class="raquette-ligne" type="button" data-lightbox-group="raquettes" data-lightbox-src="images/raquette-next-gen-nfa.jpg" data-lightbox-caption="NOX Next Gen NFA · 189 €" aria-label="Voir la NOX Next Gen NFA en photo"><img src="images/raquette-next-gen-nfa.jpg" alt="" loading="lazy" width="675" height="900"><span class="raquette-ligne__nom">Next Gen NFA</span><span class="raquette-ligne__prix">189&nbsp;€</span></button></li>
+                  <li><button class="raquette-ligne" type="button" data-lightbox-group="raquettes" data-lightbox-src="images/raquette-ea10-ventus.jpg" data-lightbox-caption="NOX EA10 Ventus · 217 €" aria-label="Voir la NOX EA10 Ventus en photo"><img src="images/raquette-ea10-ventus.jpg" alt="" loading="lazy" width="675" height="900"><span class="raquette-ligne__nom">EA10 Ventus</span><span class="raquette-ligne__prix">217&nbsp;€</span></button></li>
+                  <li><button class="raquette-ligne" type="button" data-lightbox-group="raquettes" data-lightbox-src="images/raquette-at10-genius.jpg" data-lightbox-caption="NOX AT10 Genius (Tapia · noire) · prix au comptoir" aria-label="Voir la NOX AT10 Genius noire en photo"><img src="images/raquette-at10-genius.jpg" alt="" loading="lazy" width="675" height="900"><span class="raquette-ligne__nom">AT10 Genius (Tapia · noire)</span><span class="raquette-ligne__prix">au comptoir</span></button></li>
+                  <li><button class="raquette-ligne" type="button" data-lightbox-group="raquettes" data-lightbox-src="images/raquette-at10-xtrem.jpg" data-lightbox-caption="NOX AT10 Genius Xtrem (Tapia · blanche) · prix au comptoir" aria-label="Voir la NOX AT10 Genius Xtrem blanche en photo"><img src="images/raquette-at10-xtrem.jpg" alt="" loading="lazy" width="675" height="900"><span class="raquette-ligne__nom">AT10 Genius Xtrem (Tapia · blanche)</span><span class="raquette-ligne__prix">au comptoir</span></button></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <div class="comptoir__side">
+            <article class="comptoir-card" data-reveal>
+              <h3>Le wallet du club</h3>
+              <p>Recharge ton compte au comptoir et joue sans sortir la carte. Plus tu charges, plus tu gagnes :</p>
+              <ul class="comptoir-wallet">
+                <li>100&nbsp;€ versés = <strong>110&nbsp;€ de crédit</strong></li>
+                <li>200&nbsp;€ versés = <strong>230&nbsp;€ de crédit</strong></li>
+                <li>300&nbsp;€ versés = <strong>360&nbsp;€ de crédit</strong></li>
+              </ul>
+            </article>
+
+            <article class="comptoir-card" data-reveal style="--d:.1s">
+              <h3>La licence, on te la fait sur place</h3>
+              <p><strong>26&nbsp;€</strong>, valable jusqu'au 31&nbsp;août. Cinq minutes au comptoir, avec :</p>
+              <ul class="comptoir-liste">
+                <li>prénom et nom</li>
+                <li>date de naissance</li>
+                <li>adresse postale</li>
+                <li>e-mail et téléphone</li>
+              </ul>
+              <p class="comptoir-card__note">
+                Elle est obligatoire pour les tournois homologués, pas pour les parties entre amis.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Chiffres clés -->
     <section class="stats" aria-label="Le club en chiffres">
