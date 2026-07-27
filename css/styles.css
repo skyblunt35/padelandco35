@@ -2355,44 +2355,6 @@ html.is-leaving body { opacity: 0; transition: opacity .17s ease; }
 
 
 /* ============================================================
-   AFFICHE P25 sur la page Actus — à retirer avec l'annonce P25
-   ============================================================ */
-.news-affiche {
-  position: relative;
-  max-width: 380px;
-  margin: 2.6rem auto 0;
-  border-radius: var(--r-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-}
-.news-affiche img {
-  display: block;
-  width: 100%;
-  height: auto;
-  transition: transform .6s var(--ease);
-}
-.news-affiche:hover img { transform: scale(1.03); }
-.news-affiche:hover .gallery__hint,
-.news-affiche .gallery__zoom:focus-visible .gallery__hint { opacity: 1; scale: 1; }
-.news-affiche figcaption {
-  position: absolute;
-  left: .8rem;
-  bottom: .8rem;
-  padding: .42em 1em;
-  background: rgba(9, 19, 36, .78);
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
-  color: var(--white);
-  font-size: .78rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .09em;
-  border-radius: var(--r-pill);
-  pointer-events: none;
-}
-
-
-/* ============================================================
    CARTES-ESPACES (le-complexe) — la visite en 4 diaporamas
    ============================================================ */
 .espaces { display: grid; gap: 1.5rem; margin-top: 2.4rem; }
