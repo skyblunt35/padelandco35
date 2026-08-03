@@ -227,11 +227,10 @@
             </div>
           </div>
 
-          <!-- Formulaire de contact.
-               ⚙️ DÉMO : l'envoi est simulé côté client (voir js/main.js).
-               Pour le rendre fonctionnel : brancher sur Formspree, Netlify Forms
-               ou un endpoint maison, en conservant les attributs name. -->
-          <form class="form" id="contact-form" novalidate data-reveal>
+          <!-- Formulaire de contact — branché sur Formspree (envoi réel vers
+               padelandco35@gmail.com, voir initForm dans js/main.js). -->
+          <form class="form" id="contact-form" action="https://formspree.io/f/xeeyypye" method="POST" novalidate data-reveal>
+            <input type="hidden" name="_subject" value="Nouveau message depuis padelandco35.fr">
             <div class="field">
               <label class="field__label" for="f-nom">Ton nom <span aria-hidden="true">*</span></label>
               <input class="field__input" type="text" id="f-nom" name="nom" autocomplete="name" required>
@@ -253,7 +252,7 @@
             <!-- Champ anti-spam invisible (honeypot) : doit rester vide -->
             <div class="field field--hp" aria-hidden="true">
               <label for="f-website">Ne pas remplir</label>
-              <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off">
+              <input type="text" id="f-website" name="_gotcha" tabindex="-1" autocomplete="off">
             </div>
 
             <div class="field field--checkbox">
@@ -270,6 +269,11 @@
               Envoyer le message
               <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
             </button>
+
+            <p class="form__error" id="form-error" role="alert" hidden>
+              L'envoi a échoué. Réessaie dans un instant, ou écris-nous directement à
+              <a href="mailto:padelandco35@gmail.com">padelandco35@gmail.com</a>.
+            </p>
 
             <div class="form__success" id="form-success" role="status" hidden>
               <svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>

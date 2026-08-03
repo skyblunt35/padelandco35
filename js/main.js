@@ -314,9 +314,9 @@ function initAccordion() {
 /* ============================================================
    8. FORMULAIRE DE CONTACT
    ------------------------------------------------------------
-   ⚙️ DÉMO : l'envoi est simulé côté client.
-   Pour la prod : remplacer la partie "simulation d'envoi"
-   par un fetch() vers Formspree / une fonction serverless Vercel / votre backend.
+   Envoi réel via Formspree (l'endpoint est dans l'attribut
+   action du formulaire) : les messages arrivent sur
+   padelandco35@gmail.com, « Répondre à » = e-mail du visiteur.
    ============================================================ */
 function initForm() {
   const form = $('#contact-form');
@@ -367,17 +367,30 @@ function initForm() {
       return;
     }
 
-    // --- Simulation d'envoi (à remplacer par un vrai fetch) ---
+    // --- Envoi réel vers Formspree ---
     const submit = $('.form__submit', form);
+    const erreur = $('#form-error');
     submit.disabled = true;
     submit.firstChild.textContent = 'Envoi en cours… ';
+    if (erreur) erreur.hidden = true;
 
-    window.setTimeout(() => {
-      $('#form-success').hidden = false;
-      submit.hidden = true;
-      form.reset();
-      $('#form-success').focus?.();
-    }, 900);
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { Accept: 'application/json' },
+    })
+      .then((reponse) => {
+        if (!reponse.ok) throw new Error('HTTP ' + reponse.status);
+        $('#form-success').hidden = false;
+        submit.hidden = true;
+        form.reset();
+        $('#form-success').focus?.();
+      })
+      .catch(() => {
+        if (erreur) erreur.hidden = false;
+        submit.disabled = false;
+        submit.firstChild.textContent = 'Envoyer le message ';
+      });
   });
 }
 

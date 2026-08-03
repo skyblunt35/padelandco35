@@ -2565,6 +2565,21 @@ html.is-leaving body { opacity: 0; transition: opacity .17s ease; }
 
 
 /* ============================================================
+   FORMULAIRE — message d'échec d'envoi (contact)
+   ============================================================ */
+.form__error {
+  margin-top: 1rem;
+  padding: .8rem 1.1rem;
+  background: #FBEAE9;
+  border: 1px solid rgba(180, 35, 24, .35);
+  border-radius: var(--r-sm);
+  color: var(--red);
+  font-size: .95rem;
+}
+.form__error a { color: inherit; font-weight: 600; }
+
+
+/* ============================================================
    PAGES LÉGALES — mentions légales & politique de confidentialité
    ============================================================ */
 .legal-body { max-width: 76ch; }
