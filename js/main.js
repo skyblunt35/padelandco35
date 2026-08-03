@@ -381,10 +381,13 @@ function initForm() {
     })
       .then((reponse) => {
         if (!reponse.ok) throw new Error('HTTP ' + reponse.status);
-        $('#form-success').hidden = false;
+        const succes = $('#form-success');
         submit.hidden = true;
+        succes.hidden = false;
         form.reset();
-        $('#form-success').focus?.();
+        // On amène la confirmation sous les yeux du visiteur
+        succes.scrollIntoView({ block: 'center' });
+        succes.focus({ preventScroll: true });
       })
       .catch(() => {
         if (erreur) erreur.hidden = false;
