@@ -1833,6 +1833,9 @@ body.menu-open { overflow: hidden; }
 .cours-card__lignes strong { font-weight: 700; color: var(--ink); white-space: nowrap; }
 .cours-card__note { margin-top: auto; padding-top: 1.15rem; font-size: .92rem; color: var(--slate); }
 .cours-card__note a { color: var(--blue); font-weight: 600; }
+.cours-teaser__more { margin-top: 1.8rem; text-align: center; }
+/* Sur fond paper (page Nos cours), les cartes passent en blanc pour se détacher */
+.section--paper .cours-card { background: var(--white); }
 
 /* Brèves (page Actus) */
 .breves { display: grid; gap: 1.2rem; }
