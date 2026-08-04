@@ -1618,13 +1618,15 @@ body.menu-open { overflow: hidden; }
   z-index: var(--z-float);
   display: inline-flex;
   align-items: center;
-  gap: .6rem;
-  padding: .95em 1.7em;
+  gap: .55rem;
+  padding: .8em 1.4em;
   background: var(--volt);
   color: var(--navy-900);
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: .95rem;
+  line-height: 1;
+  white-space: nowrap;
   text-transform: uppercase;
   letter-spacing: .04em;
   text-decoration: none;
@@ -1635,7 +1637,7 @@ body.menu-open { overflow: hidden; }
   pointer-events: none;
   transition: opacity .32s var(--ease), translate .32s var(--ease);
 }
-.cta-float .icon { width: 17px; height: 17px; }
+.cta-float .icon { width: 15px; height: 15px; }
 .cta-float.is-visible {
   opacity: 1;
   translate: -50% 0;
@@ -1643,6 +1645,11 @@ body.menu-open { overflow: hidden; }
 }
 @media (min-width: 768px) {
   .cta-float { display: none; }
+}
+/* Tant que le CTA flottant existe (mobile), on réserve sa hauteur sous le
+   footer : la ligne mentions légales / confidentialité reste cliquable. */
+@media (max-width: 767px) {
+  .site-footer { padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px)); }
 }
 
 
