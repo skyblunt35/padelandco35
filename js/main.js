@@ -417,6 +417,8 @@ function initLightbox() {
   let items = [];   // le groupe en cours de visionnage
   let index = 0;
 
+  const navs = $$('.lightbox__nav', dialog);
+
   const show = (i) => {
     index = (i + items.length) % items.length; // boucle infinie DANS le groupe
     const it = items[index];
@@ -424,6 +426,10 @@ function initLightbox() {
     img.alt = it.alt || it.caption || '';
     caption.textContent = it.caption || '';
     count.textContent = `${index + 1} / ${items.length}`;
+    // Photo seule : ni flèches ni compteur « 1 / 1 »
+    const seule = items.length < 2;
+    count.hidden = seule;
+    navs.forEach((n) => { n.hidden = seule; });
   };
 
   const itemDe = (t) => ({

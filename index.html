@@ -120,6 +120,8 @@
     <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.4 9.2a2.6 2.6 0 1 1 3.6 2.4c-.85.35-1 1-1 1.9"/><circle cx="12" cy="16.8" r=".6" fill="currentColor" stroke="none"/></symbol>
     <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></symbol>
     <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M13.5 21.5v-7.2h2.9l.5-3.4h-3.4V8.6c0-1 .3-1.6 1.7-1.6h1.8V3.9c-.3 0-1.4-.1-2.6-.1-2.6 0-4.3 1.6-4.3 4.4v2.7H7.2v3.4h2.9v7.2z"/></symbol>
+    <symbol id="i-zoom" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.2 16.2 21 21M8.5 11h5M11 8.5v5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
   </svg>
 
   <!-- ============================================================
@@ -386,12 +388,73 @@
     </section>
 
     <!-- ============================================================
+         L'AFFICHE DU MOMENT — tournois de septembre (détail : actus.html)
+         Placée après les chiffres clés : le visiteur est rassuré, on lui
+         donne une raison de venir maintenant.
+         Source image : Bureau/affiche padel/septembre - tournois
+         ============================================================ -->
+    <section class="section section--white affiche-moment" aria-labelledby="affiche-title">
+      <div class="container affiche-moment__grid">
+        <figure class="affiche-moment__media" data-reveal>
+          <button class="affiche-moment__zoom" type="button"
+                  data-lightbox-src="images/affiche-tournois-septembre.jpg"
+                  data-lightbox-caption="Tournois de septembre : 7 dates homologuées, inscriptions sur l'appli PADEL AND CO 35"
+                  aria-label="Agrandir l'affiche des tournois de septembre">
+            <img src="images/affiche-tournois-septembre.jpg"
+                 alt="L'affiche des tournois de septembre : 7 dates homologuées en double, du P25 au P100, du 5 au 29 septembre"
+                 width="1200" height="1698" loading="lazy">
+            <span class="affiche-moment__loupe" aria-hidden="true"><svg class="icon"><use href="#i-zoom"/></svg></span>
+          </button>
+        </figure>
+        <div class="affiche-moment__body" data-reveal>
+          <p class="section__label"><span aria-hidden="true">★</span>L'affiche du moment</p>
+          <h2 class="section__title section__title--sm" id="affiche-title">Sept tournois en septembre</h2>
+          <p class="affiche-moment__texte">
+            La rentrée se joue en double&nbsp;: du <strong>P25</strong> pour se lancer au
+            premier <strong>P100</strong> du club pour les compétiteurs, sept dates
+            homologuées t'attendent du 5 au 29 septembre. Clique sur l'affiche pour
+            zoomer, choisis ta date et inscris ton équipe sur l'appli.
+          </p>
+          <div class="affiche-moment__actions">
+            <a class="btn btn--volt" href="https://padel-and-co.mymobileapp.fr/installation" target="_blank" rel="noopener">
+              S'inscrire sur l'appli
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+            <a class="btn btn--dark" href="actus.html">
+              Toutes les actus
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox (agrandissement de l'affiche) -->
+    <dialog class="lightbox" id="lightbox" aria-label="Photo en grand format">
+      <figure class="lightbox__figure">
+        <img class="lightbox__img" src="" alt="">
+        <button class="lightbox__close" type="button" aria-label="Fermer la photo">
+          <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
+        <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Photo précédente">
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </button>
+        <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Photo suivante">
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </button>
+      </figure>
+      <div class="lightbox__bar">
+        <p class="lightbox__caption"></p>
+        <p class="lightbox__count">1 / 6</p>
+      </div>
+    </dialog>
+
+    <!-- ============================================================
          À LA UNE (teaser) — le détail vit sur la page Actus
          ============================================================ -->
     <section class="news-strip" id="news" aria-label="Actualité du club">
       <div class="container news-strip__inner" data-reveal>
         <p class="news-strip__badge">À la une</p>
-        <p class="news-strip__texte"><strong>Le programme d'août est affiché</strong>&nbsp;: cinq tournois homologués, les cours de Lucas et les inscriptions à l'école de padel.</p>
+        <p class="news-strip__texte"><strong>Montante / Descendante</strong> tous les samedis matin : monte ton duo et viens te tester.</p>
         <a class="btn btn--volt btn--sm" href="actus.html">Toutes les actus<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </section>
